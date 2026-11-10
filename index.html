@@ -1,0 +1,1113 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chispa Real — 100% Gratis, Fotos desde el 1.er Momento y Solo Gente Real</title>
+  <link rel="icon" type="image/svg+xml" href="logo.svg" />
+  <style>
+    :root {
+      --bg-dark: #090b10;
+      --card-bg: #131722;
+      --panel-bg: #1a2030;
+      --accent-pink: #ff2e63;
+      --accent-orange: #ff6b35;
+      --accent-grad: linear-gradient(135deg, #ff2e63 0%, #ff6b35 100%);
+      --emerald: #10b981;
+      --sky: #38bdf8;
+      --gold: #f59e0b;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --border: rgba(255, 255, 255, 0.1);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    body {
+      background: radial-gradient(circle at top center, #1f142e 0%, #090b10 65%);
+      color: var(--text-main);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Cabecera Manifiesto del Capitán JOULI */
+    .manifesto-banner {
+      background: linear-gradient(90deg, rgba(255, 46, 99, 0.18) 0%, rgba(16, 185, 129, 0.18) 50%, rgba(56, 189, 248, 0.18) 100%);
+      border-bottom: 1px solid rgba(16, 185, 129, 0.4);
+      padding: 12px 24px;
+      text-align: center;
+    }
+
+    .manifesto-main-quote {
+      font-size: 18px;
+      font-weight: 900;
+      color: #ffffff;
+      letter-spacing: -0.3px;
+      margin-bottom: 7px;
+    }
+
+    .manifesto-main-quote span {
+      background: var(--accent-grad);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .manifesto-pills {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .m-quote-pill {
+      font-size: 12px;
+      font-weight: 700;
+      padding: 4px 12px;
+      border-radius: 999px;
+      background: rgba(19, 23, 34, 0.9);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: #e2e8f0;
+    }
+
+    .m-quote-pill strong { color: #6ee7b7; }
+
+    /* Barra Superior */
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 24px;
+      background: rgba(19, 23, 34, 0.95);
+      border-bottom: 1px solid var(--border);
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .brand-logo-svg {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      box-shadow: 0 4px 18px rgba(255, 46, 99, 0.45);
+    }
+
+    .brand h1 { font-size: 18px; font-weight: 900; }
+    .brand span {
+      font-size: 11px;
+      color: #042f2e;
+      background: var(--emerald);
+      padding: 3px 9px;
+      border-radius: 999px;
+      margin-left: 6px;
+      font-weight: 900;
+    }
+
+    .entrepreneur-badges {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .e-badge {
+      font-size: 11px;
+      padding: 5px 10px;
+      border-radius: 999px;
+      background: rgba(16, 185, 129, 0.12);
+      border: 1px solid rgba(16, 185, 129, 0.4);
+      color: #a7f3d0;
+      font-weight: 700;
+    }
+
+    .register-cta-btn {
+      background: var(--accent-grad);
+      color: white;
+      border: none;
+      padding: 8px 15px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 800;
+      cursor: pointer;
+      box-shadow: 0 4px 16px rgba(255, 46, 99, 0.4);
+    }
+
+    /* Layout Principal */
+    .workspace {
+      display: grid;
+      grid-template-columns: 360px 1fr 380px;
+      gap: 18px;
+      max-width: 1460px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 14px 20px;
+      flex: 1;
+    }
+
+    @media (max-width: 1120px) {
+      .workspace { grid-template-columns: 1fr; }
+    }
+
+    .side-panel {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      height: calc(100vh - 175px);
+      min-height: 590px;
+    }
+
+    .panel-tabs {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      background: var(--panel-bg);
+      padding: 6px;
+      gap: 4px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .tab-btn {
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      padding: 8px 6px;
+      font-size: 11.5px;
+      font-weight: 700;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+
+    .tab-btn.active {
+      background: var(--accent-grad);
+      color: white;
+    }
+
+    .panel-content {
+      flex: 1;
+      overflow-y: auto;
+      padding: 14px;
+    }
+
+    .section-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.7px;
+      color: var(--emerald);
+      margin-bottom: 10px;
+      font-weight: 800;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .likes-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .like-card {
+      background: var(--panel-bg);
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1px solid rgba(16, 185, 129, 0.4);
+      cursor: pointer;
+      transition: transform 0.15s;
+    }
+
+    .like-card:hover { transform: translateY(-2px); }
+
+    .like-photo {
+      height: 125px;
+      background-size: cover;
+      background-position: center;
+      position: relative;
+    }
+
+    .free-tag {
+      position: absolute;
+      top: 7px;
+      left: 7px;
+      background: var(--emerald);
+      color: #042f2e;
+      font-size: 9px;
+      font-weight: 900;
+      padding: 2px 7px;
+      border-radius: 99px;
+    }
+
+    .like-info { padding: 9px; }
+    .like-info h4 { font-size: 13px; margin-bottom: 2px; }
+    .like-info p { font-size: 11px; color: var(--text-muted); }
+
+    /* Tarjeta de Publicidad No Intrusiva */
+    .ethical-ad-box {
+      margin-top: 14px;
+      background: linear-gradient(135deg, rgba(245, 158, 11, 0.14) 0%, rgba(255, 107, 53, 0.14) 100%);
+      border: 1px solid rgba(245, 158, 11, 0.45);
+      border-radius: 14px;
+      padding: 12px;
+    }
+
+    .ad-badge {
+      display: inline-block;
+      font-size: 9.5px;
+      font-weight: 900;
+      text-transform: uppercase;
+      background: rgba(245, 158, 11, 0.28);
+      color: #fde68a;
+      padding: 2px 8px;
+      border-radius: 99px;
+      margin-bottom: 6px;
+    }
+
+    .ethical-ad-box h5 { font-size: 13px; color: #fef3c7; margin-bottom: 4px; }
+    .ethical-ad-box p { font-size: 11.5px; color: #cbd5e1; line-height: 1.4; }
+
+    .shield-log-item {
+      background: rgba(16, 185, 129, 0.08);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      border-radius: 12px;
+      padding: 10px 12px;
+      margin-bottom: 8px;
+      font-size: 12px;
+    }
+
+    .shield-log-item strong {
+      color: #6ee7b7;
+      display: block;
+      margin-bottom: 3px;
+    }
+
+    /* Escenario Central */
+    .center-stage {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .phone-frame {
+      width: 395px;
+      height: 565px;
+      background: var(--card-bg);
+      border-radius: 28px;
+      border: 2px solid rgba(16, 185, 129, 0.45);
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.7);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .profile-visual {
+      flex: 1;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 20px;
+      background-size: cover;
+      background-position: center top;
+      transition: transform 0.28s ease;
+    }
+
+    .stamp-badge {
+      position: absolute;
+      top: 26px;
+      padding: 8px 18px;
+      font-size: 22px;
+      font-weight: 900;
+      border-radius: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      opacity: 0;
+      transition: all 0.2s;
+      pointer-events: none;
+      z-index: 5;
+    }
+
+    .stamp-like { left: 22px; color: var(--emerald); border: 3px solid var(--emerald); transform: rotate(-12deg); }
+    .stamp-nope { right: 22px; color: var(--accent-pink); border: 3px solid var(--accent-pink); transform: rotate(12deg); }
+
+    .verified-chip {
+      position: absolute;
+      top: 16px;
+      left: 16px;
+      background: rgba(4, 47, 46, 0.92);
+      padding: 6px 12px;
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 800;
+      color: #6ee7b7;
+      border: 1px solid rgba(16, 185, 129, 0.6);
+      z-index: 3;
+    }
+
+    .compatibility-chip {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      background: var(--emerald);
+      color: #032b1f;
+      padding: 6px 11px;
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 900;
+      z-index: 3;
+    }
+
+    .profile-overlay {
+      background: linear-gradient(to top, rgba(9, 11, 16, 0.98) 22%, rgba(9, 11, 16, 0.72) 78%, transparent 100%);
+      margin: -20px;
+      padding: 65px 20px 16px 20px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .profile-name { font-size: 25px; font-weight: 800; }
+    .profile-distance { font-size: 12px; color: #6ee7b7; font-weight: 600; margin: 3px 0 8px 0; }
+    .profile-bio { font-size: 13px; line-height: 1.4; color: #f1f5f9; margin-bottom: 10px; }
+
+    .direct-btns-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      margin-top: 8px;
+    }
+
+    .direct-free-msg-btn {
+      background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+      color: #032b1f;
+      border: none;
+      padding: 9px 10px;
+      border-radius: 11px;
+      font-size: 12px;
+      font-weight: 900;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+    }
+
+    .direct-photo-btn {
+      background: linear-gradient(135deg, #38bdf8 0%, #0284c7 100%);
+      color: #041e30;
+      border: none;
+      padding: 9px 10px;
+      border-radius: 11px;
+      font-size: 12px;
+      font-weight: 900;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+    }
+
+    .tags-row { display: flex; flex-wrap: wrap; gap: 5px; }
+    .tag-chip {
+      font-size: 10.5px;
+      padding: 3px 9px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.16);
+      color: #fff;
+      font-weight: 600;
+    }
+
+    .action-dock {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      padding: 12px;
+      background: #10131c;
+      border-top: 1px solid var(--border);
+    }
+
+    .act-btn {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      border: 1px solid var(--border);
+      background: var(--panel-bg);
+      color: white;
+      font-size: 19px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.15s;
+    }
+
+    .act-btn:hover { transform: scale(1.1); }
+    .act-btn.rewind { color: var(--gold); border-color: rgba(245, 158, 11, 0.45); }
+    .act-btn.nope { color: var(--accent-pink); border-color: rgba(255, 46, 99, 0.45); width: 54px; height: 54px; font-size: 22px; }
+    .act-btn.super { color: var(--sky); border-color: rgba(56, 189, 248, 0.45); }
+    .act-btn.like { color: var(--emerald); border-color: rgba(16, 185, 129, 0.45); width: 54px; height: 54px; font-size: 22px; }
+
+    /* Chat */
+    .chat-box { display: flex; flex-direction: column; height: 100%; }
+    .chat-header {
+      padding: 12px 16px;
+      border-bottom: 1px solid var(--border);
+      background: var(--panel-bg);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .chat-header-avatar {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid var(--emerald);
+    }
+
+    .chat-messages {
+      flex: 1;
+      padding: 14px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 9px;
+    }
+
+    .msg {
+      max-width: 84%;
+      padding: 9px 13px;
+      border-radius: 15px;
+      font-size: 12.5px;
+      line-height: 1.4;
+    }
+
+    .msg.them { background: var(--panel-bg); align-self: flex-start; border-bottom-left-radius: 4px; }
+    .msg.me { background: var(--accent-grad); color: white; align-self: flex-end; border-bottom-right-radius: 4px; }
+
+    .msg img {
+      max-width: 210px;
+      border-radius: 10px;
+      display: block;
+      margin-bottom: 5px;
+      border: 1px solid rgba(255,255,255,0.2);
+    }
+
+    .icebreaker-box {
+      padding: 8px 13px;
+      background: rgba(16, 185, 129, 0.08);
+      border-top: 1px solid rgba(16, 185, 129, 0.25);
+      border-bottom: 1px solid rgba(16, 185, 129, 0.25);
+    }
+
+    .icebreaker-title {
+      font-size: 10.5px;
+      color: var(--emerald);
+      font-weight: 800;
+      margin-bottom: 5px;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .ice-btn {
+      display: block;
+      width: 100%;
+      text-align: left;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border);
+      color: #e2e8f0;
+      padding: 6px 9px;
+      border-radius: 8px;
+      font-size: 11px;
+      cursor: pointer;
+      margin-bottom: 4px;
+    }
+
+    .ice-btn:hover { background: rgba(16, 185, 129, 0.2); }
+
+    .chat-input-row {
+      display: flex;
+      padding: 10px;
+      gap: 6px;
+      background: var(--panel-bg);
+      align-items: center;
+    }
+
+    .photo-upload-btn {
+      background: rgba(56, 189, 248, 0.18);
+      border: 1px solid rgba(56, 189, 248, 0.5);
+      color: #7dd3fc;
+      padding: 9px 11px;
+      border-radius: 11px;
+      font-size: 14px;
+      cursor: pointer;
+      font-weight: 800;
+      flex-shrink: 0;
+    }
+
+    .chat-input-row input[type="text"] {
+      flex: 1;
+      background: var(--bg-dark);
+      border: 1px solid var(--border);
+      color: white;
+      padding: 10px 12px;
+      border-radius: 11px;
+      font-size: 12.5px;
+      outline: none;
+    }
+
+    .send-btn {
+      background: var(--emerald);
+      border: none;
+      color: #032b1f;
+      padding: 10px 14px;
+      border-radius: 11px;
+      font-weight: 900;
+      cursor: pointer;
+      font-size: 12px;
+    }
+
+    /* Modal Crear Perfil Real Gratis */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(5, 7, 11, 0.86);
+      backdrop-filter: blur(10px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 100;
+      padding: 20px;
+    }
+
+    .modal-card {
+      background: var(--card-bg);
+      border: 2px solid var(--emerald);
+      border-radius: 24px;
+      max-width: 480px;
+      width: 100%;
+      padding: 22px;
+      box-shadow: 0 24px 60px rgba(0,0,0,0.85);
+    }
+
+    .form-field {
+      margin-bottom: 12px;
+    }
+
+    .form-field label {
+      display: block;
+      font-size: 12px;
+      font-weight: 700;
+      color: #cbd5e1;
+      margin-bottom: 4px;
+    }
+
+    .form-field input, .form-field textarea {
+      width: 100%;
+      background: var(--bg-dark);
+      border: 1px solid var(--border);
+      color: white;
+      padding: 9px 12px;
+      border-radius: 10px;
+      font-size: 13px;
+    }
+
+    .toast {
+      position: fixed;
+      bottom: 22px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--emerald);
+      color: #042f2e;
+      font-weight: 900;
+      padding: 12px 24px;
+      border-radius: 999px;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.5);
+      display: none;
+      z-index: 99;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- PRESENTACIÓN OFICIAL CON LAS FRASES EXACTAS DE ISMAEL -->
+  <section class="manifesto-banner">
+    <div class="manifesto-main-quote">
+      «¿Hasta las narices de pagar por mandar mensajes a una persona que te atrae? <span>Pues esta es GRATIS.</span>»
+    </div>
+    <div class="manifesto-pills">
+      <div class="m-quote-pill">💬 «Si te gusta alguien a primera vista, <strong>no tiene que separarlo el euro</strong>.»</div>
+      <div class="m-quote-pill">❤️ «<strong>Que el dinero no nos prive de nuestro gusto</strong>.»</div>
+      <div class="m-quote-pill">📸 «<strong>Manda fotos y mensajes desde el primer momento</strong> sin pagar nada.»</div>
+      <div class="m-quote-pill">🛡️ «<strong>Gente falsa nula</strong>: solo personas reales con fotografía verificada.»</div>
+    </div>
+  </section>
+
+  <!-- Barra Superior con Logotipo Oficial SVG -->
+  <header class="topbar">
+    <div class="brand">
+      <svg class="brand-logo-svg" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#ff2e63"/>
+            <stop offset="55%" stop-color="#ff6b35"/>
+            <stop offset="100%" stop-color="#10b981"/>
+          </linearGradient>
+        </defs>
+        <rect width="120" height="120" rx="28" fill="url(#bgGrad)"/>
+        <path d="M60 96 C60 96 24 72 24 45 C24 31 35 22 47 22 C54 22 58 26 60 31 C62 26 66 22 73 22 C85 22 96 31 96 45 C96 72 60 96 60 96 Z" fill="#ffffff"/>
+        <path d="M60 76 C60 76 42 62 42 47 C42 39 48 34 54 38 C57 40 60 45 60 45 C60 45 63 40 66 38 C72 34 78 39 78 47 C78 62 60 76 60 76 Z" fill="#ff2e63"/>
+        <circle cx="92" cy="28" r="14" fill="#10b981" stroke="#090b10" stroke-width="3"/>
+        <path d="M86 28 L90 32 L98 24" stroke="#042f2e" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+      </svg>
+      <div>
+        <h1>Chispa Real <span>100% GRATUITA · FOTOS DESDE EL MINUTO 1 · INGRESOS POR PUBLICIDAD PARA NOSOTROS</span></h1>
+      </div>
+    </div>
+    <div class="entrepreneur-badges">
+      <div class="e-badge">📷 Fotos en Chat Activas</div>
+      <div class="e-badge">🔒 Seguridad Cifrada E2E</div>
+      <button class="register-cta-btn" onclick="openRegisterModal()">➕ Crear Mi Perfil Real Gratis</button>
+    </div>
+  </header>
+
+  <main class="workspace">
+    <!-- Panel Izquierdo -->
+    <aside class="side-panel">
+      <div class="panel-tabs">
+        <button class="tab-btn active" onclick="switchLeftTab('likes', this)">💚 Le gustas (4)</button>
+        <button class="tab-btn" onclick="switchLeftTab('ads', this)">💰 Nuestros Ingresos</button>
+        <button class="tab-btn" onclick="switchLeftTab('security', this)">🔒 Seguridad</button>
+      </div>
+
+      <!-- Pestaña 1: Likes con Fotografías Reales -->
+      <div class="panel-content" id="tab-likes">
+        <div class="section-label">
+          <span>Personas Reales (Haz clic para hablar gratis)</span>
+        </div>
+        <div class="likes-grid" id="likesGrid"></div>
+
+        <!-- Bloque de Publicidad No Intrusiva que nos genera ingresos -->
+        <div class="ethical-ad-box">
+          <span class="ad-badge">💰 Espacio Publicitario (Ingreso para Nosotros)</span>
+          <h5>🍷 Plan Primera Cita — Puerto de Castro Urdiales</h5>
+          <p>Los restaurantes, cafeterías y marcas pagan a nuestra plataforma por aparecer aquí como plan recomendado para la primera cita. <strong>El usuario paga 0,00 € y nosotros cobramos al anunciante.</strong></p>
+        </div>
+      </div>
+
+      <!-- Pestaña 2: Cómo Nos Genera Ingresos a Nosotros -->
+      <div class="panel-content" id="tab-ads" style="display:none;">
+        <div class="section-label"><span>Cómo Gana Dinero Nuestra App</span></div>
+        <div class="shield-log-item">
+          <strong>1. Patrocinios de Hostelería y «Primera Cita» (150€–300€/mes por local)</strong>
+          Bares, restaurantes y cines pagan por ofrecer su local cuando dos personas hacen Chispa en su ciudad.
+        </div>
+        <div class="shield-log-item">
+          <strong>2. Banners Nativos No Intrusivos (Google AdSense / AdMob)</strong>
+          Cada vez que miles de usuarios navegan gratis y mandan mensajes o fotos, los anuncios discretos laterales generan ingresos por cada 1.000 impresiones (CPM) y por clic (CPC).
+        </div>
+        <div class="shield-log-item">
+          <strong>3. Efecto Expansión («Que se expanda»)</strong>
+          Al ser la única app donde mandar mensajes y fotos desde el primer momento es 100% gratis, la gente la recomienda sola sin gastar en marketing.
+        </div>
+      </div>
+
+      <!-- Pestaña 3: Seguridad -->
+      <div class="panel-content" id="tab-security" style="display:none;">
+        <div class="section-label"><span>Seguridad Blindada</span></div>
+        <div class="shield-log-item">
+          <strong>1. Prohibidos los Avatares Falsos o Dibujos</strong>
+          Solo fotografías de personas verificadas con prueba de cámara en vivo.
+        </div>
+        <div class="shield-log-item">
+          <strong>2. Envío de Fotos Seguro desde el Primer Momento</strong>
+          Filtro inteligente anti-spam y cifrado de extremo a extremo en cada imagen enviada.
+        </div>
+        <div class="shield-log-item">
+          <strong>3. Botón de Bloqueo Instantáneo y Expulsión de Bots</strong>
+          Tolerancia cero con perfiles falsos o estafas.
+        </div>
+      </div>
+    </aside>
+
+    <!-- Escenario Central con Fotografía Real -->
+    <section class="center-stage">
+      <div class="phone-frame">
+        <div class="profile-visual" id="cardVisual">
+          <div class="stamp-badge stamp-like" id="stampLike">CHISPA</div>
+          <div class="stamp-badge stamp-nope" id="stampNope">PASO</div>
+          <div class="verified-chip" id="cardVerified">✔️ Fotografía Real Verificada por Cámara</div>
+          <div class="compatibility-chip" id="cardCompat">96% Afinidad</div>
+
+          <div class="profile-overlay">
+            <div class="profile-name" id="cardName">Lucía, 29</div>
+            <div class="profile-distance" id="cardMeta">📍 A 2 km · Arquitecta naval · En línea</div>
+            <p class="profile-bio" id="cardBio">"Amante de las rabas del puerto los domingos, el surf en Oriñón y las buenas conversaciones sin rodeos."</p>
+            <div class="tags-row" id="cardTags"></div>
+            <div class="direct-btns-row">
+              <button class="direct-free-msg-btn" onclick="directFreeMessage()">
+                💌 Mensaje Gratis
+              </button>
+              <button class="direct-photo-btn" onclick="triggerPhotoSend()">
+                📷 Mandar Foto Ya
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="action-dock">
+          <button class="act-btn rewind" title="Deshacer gratis" onclick="rewindCard()">⏪</button>
+          <button class="act-btn nope" title="Pasar" onclick="swipeCard('nope')">✖️</button>
+          <button class="act-btn super" title="Súper Chispa Gratis" onclick="swipeCard('super')">⭐</button>
+          <button class="act-btn like" title="Me gusta" onclick="swipeCard('like')">💚</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Panel Derecho: Chat con Envío de Fotos desde el Primer Momento -->
+    <aside class="side-panel">
+      <div class="chat-box">
+        <div class="chat-header">
+          <img id="chatHeaderPhoto" class="chat-header-avatar" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80" alt="Foto perfil" />
+          <div>
+            <strong id="chatActiveName" style="font-size:15px;">Lucía, 29</strong>
+            <div style="font-size:11px; color:var(--emerald);">🔒 Mensajes y Fotos Gratis desde el minuto 1</div>
+          </div>
+        </div>
+
+        <div class="chat-messages" id="chatMessages">
+          <div class="msg them">¡Hola! Qué bien que aquí se vean fotografías reales y podamos mandarnos mensajes y fotos desde el primer momento sin pagar nada 😊</div>
+          <div class="msg me">¡Tal cual! Si te gusta alguien a primera vista, no tiene que separarlo el euro.</div>
+        </div>
+
+        <div class="icebreaker-box">
+          <div class="icebreaker-title">
+            <span>✨ Rompehielos Gratuitos o Envía una Foto con 📷</span>
+            <span>0,00 € siempre</span>
+          </div>
+          <div id="icebreakersContainer"></div>
+        </div>
+
+        <div class="chat-input-row">
+          <input type="file" id="photoInput" accept="image/*" style="display:none;" onchange="handlePhotoSelected(event)" />
+          <button class="photo-upload-btn" title="Mandar foto desde el primer momento" onclick="triggerPhotoSend()">📷 Foto</button>
+          <input type="text" id="chatInput" placeholder="Escribe o pulsa 📷 para mandar foto gratis..." onkeydown="if(event.key==='Enter') sendMessage()" />
+          <button class="send-btn" onclick="sendMessage()">Enviar</button>
+        </div>
+      </div>
+    </aside>
+  </main>
+
+  <!-- Modal Registro de Persona Real -->
+  <div class="modal-backdrop" id="registerModal">
+    <div class="modal-card">
+      <h2 style="font-size:19px; margin-bottom:6px;">➕ Alta de Persona Real (100% Gratis)</h2>
+      <p style="font-size:12px; color:var(--text-muted); margin-bottom:14px;">
+        Sube tu fotografía real o tómala desde tu móvil/cámara. Sin cobros ni tarjetas de crédito.
+      </p>
+      <div class="form-field">
+        <label>Nombre y Edad</label>
+        <input type="text" id="regName" placeholder="Ej: Carlos, 34" />
+      </div>
+      <div class="form-field">
+        <label>Ciudad / Profesión</label>
+        <input type="text" id="regMeta" placeholder="Ej: 📍 Castro Urdiales · Ingeniero" />
+      </div>
+      <div class="form-field">
+        <label>Sobre ti</label>
+        <textarea id="regBio" rows="2" placeholder="Qué te apasiona y qué buscas..."></textarea>
+      </div>
+      <div class="form-field">
+        <label>Tu Fotografía Real (Obligatoria)</label>
+        <input type="file" id="regPhoto" accept="image/*" capture="user" />
+      </div>
+      <div style="display:flex; gap:10px; justify-content:flex-end; margin-top:14px;">
+        <button class="register-cta-btn" style="background:#334155;" onclick="closeRegisterModal()">Cancelar</button>
+        <button class="register-cta-btn" onclick="submitRealProfile()">✔️ Publicar Mi Perfil Gratis</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast" id="toastMsg">📸 ¡Foto enviada gratis desde el primer momento!</div>
+
+  <script>
+    const defaultProfiles = [
+      {
+        name: "Lucía, 29",
+        meta: "📍 A 2 km · Arquitecta naval · Foto verificada en cámara",
+        bio: "Amante de las rabas del puerto los domingos, el surf en Oriñón y las buenas conversaciones sin rodeos.",
+        photo: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=800&q=80",
+        compat: "96% Afinidad",
+        tags: ["Foto Verificada", "Surf en Oriñón", "Arquitectura", "Fotos y Chat Gratis"],
+        icebreakers: [
+          "¿Rabas en La Marinera o paseo por el rompeolas para empezar el domingo?",
+          "Te mando foto de cómo está el mar hoy en Castro 🌊"
+        ]
+      },
+      {
+        name: "Elena, 32",
+        meta: "📍 A 4 km · Fotógrafa gastronómica · Foto verificada en cámara",
+        bio: "Buscando cómplice para rutas de montaña por Cantabria, conciertos acústicos y probar cafeterías nuevas.",
+        photo: "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=800&q=80",
+        compat: "92% Afinidad",
+        tags: ["Foto Verificada", "Fotografía", "Rutas de montaña", "Fotos y Chat Gratis"],
+        icebreakers: [
+          "Si tuvieras que hacerle una foto al mejor plato de Castro Urdiales, ¿cuál elegirías?",
+          "¿Intercambiamos una foto de nuestro rincón favorito de Cantabria?"
+        ]
+      },
+      {
+        name: "Marta, 27",
+        meta: "📍 A 6 km · Diseñadora 3D · Foto verificada en cámara",
+        bio: "Creativa a tiempo completo. Me encantan los videojuegos indie, el cine de ciencia ficción y escapadas improvisadas.",
+        photo: "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=800&q=80",
+        compat: "95% Afinidad",
+        tags: ["Foto Verificada", "Diseño 3D", "Sci-Fi", "Fotos y Chat Gratis"],
+        icebreakers: [
+          "¿Cuál es esa película de ciencia ficción que podrías ver diez veces seguidas?",
+          "¡Qué bueno poder hablar y mandar fotos desde el minuto uno sin muros de pago!"
+        ]
+      },
+      {
+        name: "Sofía, 31",
+        meta: "📍 A 3 km · Instructora de vela · Foto verificada en cámara",
+        bio: "El mar lo cura todo. Si sabes reírte de ti mismo y te gustan las puestas de sol desde Santa Ana, nos llevaremos genial.",
+        photo: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=800&q=80",
+        compat: "98% Afinidad",
+        tags: ["Foto Verificada", "Vela", "Santa Ana", "Fotos y Chat Gratis"],
+        icebreakers: [
+          "Prometo no marearme en el barco si tú eliges dónde tomamos algo al bajar a tierra ⛵",
+          "¿La mejor puesta de sol de Castro se ve desde Santa Ana o desde mar adentro?"
+        ]
+      }
+    ];
+
+    let profiles = JSON.parse(localStorage.getItem("chispa_real_profiles") || "null") || defaultProfiles;
+
+    const incomingLikes = [
+      {
+        name: "Paula, 30",
+        dist: "A 1,5 km",
+        photo: "https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?auto=format&fit=crop&w=500&q=80",
+        bio: "Sumiller · Chat y fotos abiertos"
+      },
+      {
+        name: "Clara, 28",
+        dist: "A 3 km",
+        photo: "https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?auto=format&fit=crop&w=500&q=80",
+        bio: "Música indie · Chat y fotos abiertos"
+      },
+      {
+        name: "Nerea, 31",
+        dist: "A 2 km",
+        photo: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=500&q=80",
+        bio: "Ilustradora · Chat y fotos abiertos"
+      },
+      {
+        name: "Irene, 26",
+        dist: "A 5 km",
+        photo: "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?auto=format&fit=crop&w=500&q=80",
+        bio: "Senderismo · Chat y fotos abiertos"
+      }
+    ];
+
+    let currentIndex = 0;
+    let historyStack = [];
+
+    function renderCard() {
+      const p = profiles[currentIndex];
+      document.getElementById("cardVisual").style.backgroundImage = `url('${p.photo}')`;
+      document.getElementById("cardName").textContent = p.name;
+      document.getElementById("cardMeta").textContent = p.meta;
+      document.getElementById("cardBio").textContent = `"${p.bio}"`;
+      document.getElementById("cardCompat").textContent = p.compat;
+      document.getElementById("cardTags").innerHTML = p.tags.map(t => `<span class="tag-chip">${t}</span>`).join("");
+      document.getElementById("icebreakersContainer").innerHTML = p.icebreakers.map(ice =>
+        `<button class="ice-btn" onclick="sendIcebreaker('${ice.replace(/'/g, "\\'")}')">💬 "${ice}"</button>`
+      ).join("");
+    }
+
+    function renderLikes() {
+      document.getElementById("likesGrid").innerHTML = incomingLikes.map((l) => `
+        <div class="like-card" onclick="openFreeChat('${l.name}', '${l.photo}')">
+          <div class="like-photo" style="background-image:url('${l.photo}')">
+            <span class="free-tag">ESCRIBE O MANDA FOTO</span>
+          </div>
+          <div class="like-info">
+            <h4>${l.name} ✔️</h4>
+            <p>${l.dist} · ${l.bio}</p>
+          </div>
+        </div>
+      `).join("");
+    }
+
+    function directFreeMessage() {
+      const p = profiles[currentIndex];
+      openFreeChat(p.name, p.photo);
+      document.getElementById("chatInput").focus();
+      showToast(`💌 Chat directo abierto con ${p.name} — ¡Escribe o manda foto gratis!`);
+    }
+
+    function openFreeChat(name, photo) {
+      document.getElementById("chatActiveName").textContent = name;
+      document.getElementById("chatHeaderPhoto").src = photo;
+      const chatMessages = document.getElementById("chatMessages");
+      chatMessages.innerHTML += `<div class="msg them">¡Hola! Qué gusto poder hablar y mandarnos fotos desde el primer momento sin pagar un euro 🙌</div>`;
+      chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+
+    function triggerPhotoSend() {
+      document.getElementById("photoInput").click();
+    }
+
+    function handlePhotoSelected(event) {
+      const file = event.target.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        const chatMessages = document.getElementById("chatMessages");
+        chatMessages.innerHTML += `
+          <div class="msg me">
+            <img src="${e.target.result}" alt="Foto enviada" />
+            <div>📷 Foto enviada desde el primer momento</div>
+          </div>
+        `;
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+        showToast("📸 ¡Fotografía enviada al instante en el chat!");
+        setTimeout(() => {
+          chatMessages.innerHTML += `<div class="msg them">¡Qué fotaza! Me encanta que se puedan mandar fotos desde el primer momento 😄📸</div>`;
+          chatMessages.scrollTop = chatMessages.scrollHeight;
+        }, 600);
+      };
+      reader.readAsDataURL(file);
+    }
+
+    function openRegisterModal() {
+      document.getElementById("registerModal").style.display = "flex";
+    }
+
+    function closeRegisterModal() {
+      document.getElementById("registerModal").style.display = "none";
+    }
+
+    function submitRealProfile() {
+      const name = document.getElementById("regName").value.trim() || "Nuevo Usuario, 30";
+      const meta = document.getElementById("regMeta").value.trim() || "📍 Recién verificado · En línea";
+      const bio = document.getElementById("regBio").value.trim() || "Aquí para conocer gente real sin muros de pago.";
+      const fileInput = document.getElementById("regPhoto");
+
+      const saveAndShow = (photoUrl) => {
+        const newP = {
+          name,
+          meta,
+          bio,
+          photo: photoUrl,
+          compat: "100% Real",
+          tags: ["Persona Real Verificada", "Fotos y Chat Gratis"],
+          icebreakers: [`¡Hola ${name.split(',')[0]}! Bienvenido a Chispa Real 🔥`]
+        };
+        profiles.unshift(newP);
+        try { localStorage.setItem("chispa_real_profiles", JSON.stringify(profiles)); } catch(e) {}
+        currentIndex = 0;
+        renderCard();
+        closeRegisterModal();
+        showToast(`✔️ ¡Perfil real de ${name} publicado gratis!`);
+      };
+
+      if (fileInput.files && fileInput.files[0]) {
+        const reader = new FileReader();
+        reader.onload = (e) => saveAndShow(e.target.result);
+        reader.readAsDataURL(fileInput.files[0]);
+      } else {
+        saveAndShow("https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=800&q=80");
+      }
+    }
+
+    function swipeCard(action) {
+      const stampLike = document.getElementById("stampLike");
+      const stampNope = document.getElementById("stampNope");
+      const visual = document.getElementById("cardVisual");
+      historyStack.push(currentIndex);
+
+      if (action === "like" || action === "super") {
+        stampLike.style.opacity = "1";
+        visual.style.transform = "translateX(45px) rotate(5deg)";
+        const p = profiles[currentIndex];
+        openFreeChat(p.name, p.photo);
+        showToast(`💚 ¡Chispa directa con ${p.name}!`);
+      } else {
+        stampNope.style.opacity = "1";
+        visual.style.transform = "translateX(-45px) rotate(-5deg)";
+      }
+
+      setTimeout(() => {
+        stampLike.style.opacity = "0";
+        stampNope.style.opacity = "0";
+        visual.style.transform = "none";
+        currentIndex = (currentIndex + 1) % profiles.length;
+        renderCard();
+      }, 240);
+    }
+
+    function rewindCard() {
+      if (historyStack.length === 0) {
+        showToast("⏪ Estás en el primer perfil");
+        return;
+      }
+      currentIndex = historyStack.pop();
+      renderCard();
+      showToast("⏪ Perfil anterior recuperado gratis");
+    }
+
+    function sendIcebreaker(text) {
+      const chatMessages = document.getElementById("chatMessages");
+      chatMessages.innerHTML += `<div class="msg me">${text}</div>`;
+      setTimeout(() => {
+        chatMessages.innerHTML += `<div class="msg them">¡Me apunto total! Y si quieres mándame foto con el botón 📷 cuando quieras 😊</div>`;
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+      }, 450);
+      chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+
+    function sendMessage() {
+      const input = document.getElementById("chatInput");
+      const val = input.value.trim();
+      if (!val) return;
+      input.value = "";
+      sendIcebreaker(val);
+    }
+
+    function switchLeftTab(tab, btn) {
+      document.querySelectorAll(".tab-btn").forEach(b => b.classList.remove("active"));
+      btn.classList.add("active");
+      document.getElementById("tab-likes").style.display = tab === "likes" ? "block" : "none";
+      document.getElementById("tab-ads").style.display = tab === "ads" ? "block" : "none";
+      document.getElementById("tab-security").style.display = tab === "security" ? "block" : "none";
+    }
+
+    function showToast(msg) {
+      const t = document.getElementById("toastMsg");
+      t.textContent = msg;
+      t.style.display = "block";
+      setTimeout(() => { t.style.display = "none"; }, 2600);
+    }
+
+    renderCard();
+    renderLikes();
+  </script>
+</body>
+</html>
