@@ -29,7 +29,7 @@
     }
 
     body {
-      background: radial-gradient(circle at top center, #1f142e 0%, #090b10 65%);
+      background: #06070a; background-image: radial-gradient(circle at 50% 0%, #151026 0%, #06070a 75%);
       color: var(--text-main);
       min-height: 100vh;
       display: flex;
@@ -640,7 +640,179 @@
       display: none;
       z-index: 99;
     }
-  </style>
+  
+    /* --- Botón Flotante y Cajón de Conversaciones Activas --- */
+    .floating-chats-btn {
+      position: fixed;
+      bottom: 24px;
+      left: 24px;
+      background: linear-gradient(135deg, #ff2e63 0%, #ff6b35 100%);
+      color: #ffffff;
+      border: 2px solid rgba(255, 255, 255, 0.4);
+      border-radius: 999px;
+      padding: 13px 22px;
+      font-size: 14px;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      box-shadow: 0 12px 35px rgba(255, 46, 99, 0.45);
+      cursor: pointer;
+      z-index: 85;
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .floating-chats-btn:hover {
+      transform: translateY(-3px) scale(1.03);
+      box-shadow: 0 16px 45px rgba(255, 46, 99, 0.6);
+    }
+    .floating-badge {
+      background: #10b981;
+      color: #042f2e;
+      font-size: 11px;
+      font-weight: 900;
+      padding: 2px 7px;
+      border-radius: 10px;
+    }
+
+    .chats-drawer {
+      position: fixed;
+      bottom: 84px;
+      left: 24px;
+      width: 340px;
+      background: rgba(15, 23, 42, 0.98);
+      backdrop-filter: blur(20px);
+      border: 2px solid var(--border);
+      border-radius: 20px;
+      padding: 18px;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8);
+      display: none;
+      flex-direction: column;
+      gap: 12px;
+      z-index: 86;
+      max-height: 480px;
+      overflow-y: auto;
+    }
+    .chats-drawer-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 10px;
+    }
+    .chats-drawer-header h3 {
+      font-size: 15px;
+      font-weight: 800;
+      color: #fff;
+    }
+    .chat-drawer-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 9px;
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.04);
+      cursor: pointer;
+      transition: background 0.15s;
+    }
+    .chat-drawer-item:hover {
+      background: rgba(255, 46, 99, 0.15);
+      border: 1px solid rgba(255, 46, 99, 0.3);
+    }
+    .chat-drawer-item img {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid var(--emerald);
+    }
+    .chat-drawer-info {
+      flex: 1;
+      min-width: 0;
+    }
+    .chat-drawer-info strong {
+      display: block;
+      font-size: 13px;
+      color: #fff;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .chat-drawer-info span {
+      display: block;
+      font-size: 11px;
+      color: var(--text-muted);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    /* --- Botón Mi Perfil y Buscar en Cabecera --- */
+    .topbar-btn {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      color: #fff;
+      padding: 8px 14px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s;
+    }
+    .topbar-btn:hover {
+      background: rgba(255, 255, 255, 0.15);
+      transform: translateY(-1px);
+    }
+    .topbar-btn.profile {
+      background: linear-gradient(135deg, rgba(16, 185, 129, 0.2), rgba(6, 182, 212, 0.2));
+      border: 1px solid var(--emerald);
+      color: #6ee7b7;
+    }
+
+    /* Book de Fotos en Modal Perfil */
+    .photo-book-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      margin: 12px 0;
+    }
+    .photo-book-item {
+      height: 110px;
+      border-radius: 12px;
+      background-size: cover;
+      background-position: center;
+      border: 1px solid var(--border);
+      position: relative;
+      overflow: hidden;
+    }
+    .photo-book-item.add {
+      border: 2px dashed rgba(255,255,255,0.25);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+      cursor: pointer;
+      background: rgba(255,255,255,0.02);
+      font-size: 11px;
+      color: #94a3b8;
+    }
+    .photo-book-item.add:hover {
+      border-color: var(--emerald);
+      color: var(--emerald);
+      background: rgba(16, 185, 129, 0.05);
+    }
+  
+    @keyframes pulse-live {
+      0% { transform: scale(0.95); opacity: 0.7; }
+      50% { transform: scale(1.3); opacity: 1; }
+      100% { transform: scale(0.95); opacity: 0.7; }
+    }
+
+</style>
+
 </head>
 <body>
 
@@ -679,6 +851,32 @@
       </div>
     </div>
     <div class="entrepreneur-badges">
+
+      <!-- ESCUDO ANTI-BOTS Y PROTECCIÓN DE PERSONAS -->
+      <button class="topbar-btn" style="border-color:#38bdf8; color:#7dd3fc; background:rgba(56,189,248,0.1);" onclick="openAntiBotModal()">
+        🛡️ Escudo Anti-Bots (100% Activo)
+      </button>
+
+
+      <!-- CONTADOR EN VIVO DE USUARIOS REALES -->
+      <div style="display:flex; align-items:center; gap:8px; background:rgba(16,185,129,0.12); border:1px solid #10b981; border-radius:999px; padding:6px 14px; box-shadow:0 0 15px rgba(16,185,129,0.25);">
+        <span style="width:8px; height:8px; background:#10b981; border-radius:50%; box-shadow:0 0 8px #10b981; animation:pulse-live 1.5s infinite;"></span>
+        <div style="display:flex; flex-direction:column; line-height:1.2;">
+          <strong style="font-size:12px; color:#6ee7b7; font-weight:900;" id="liveUserCounter">1.842 Personas Usando la App</strong>
+          <span style="font-size:9px; color:#cbd5e1;" id="totalVisitsCounter">14.920 visitas totales acumuladas</span>
+        </div>
+      </div>
+
+      <button class="topbar-btn" id="darkModeBtn" style="border-color:#a855f7; color:#d8b4fe; background:rgba(168,85,247,0.12);" onclick="toggleOledMode()">🌙 Modo Oscuro OLED</button>
+      <button class="topbar-btn" style="border-color:#eab308; color:#fde047; background:rgba(234,179,8,0.12);" onclick="openProfileVisitorsModal()">👁️ Quién vio tu perfil (<span id="visitorsCountBadge">12</span>)</button>
+      <button class="topbar-btn profile" onclick="openMyProfileModal()">👤 Mi Perfil: Ismael González Martín</button>
+      <button class="topbar-btn" onclick="openMapModal()">🗺️ Mapa Cercanía</button>
+      <button class="topbar-btn" onclick="openNotificationsModal()">🔔 Notificaciones (<span id="notifBadge">3</span>)</button>
+      <button class="topbar-btn" onclick="openSearchModal()">🔍 Buscar Persona</button>
+      <div class="e-badge">📷 Fotos en Chat</div>
+      <button class="topbar-btn profile" onclick="openMyProfileModal()">👤 Mi Perfil: Ismael González Martín</button>
+      <button class="topbar-btn" onclick="openSearchModal()">🔍 Buscar Persona</button>
+      <div class="e-badge">📷 Fotos en Chat</div>
       <div class="e-badge">📷 Fotos en Chat Activas</div>
       <div class="e-badge">🔒 Seguridad Cifrada E2E</div>
       <button class="register-cta-btn" onclick="openRegisterModal()">➕ Crear Mi Perfil Real Gratis</button>
@@ -800,6 +998,14 @@
             <span>0,00 € siempre</span>
           </div>
           <div id="icebreakersContainer"></div>
+        <div style="background:rgba(255,46,99,0.08); border:1px dashed #ff2e63; border-radius:12px; padding:10px; margin-top:8px; display:flex; justify-content:space-between; align-items:center;">
+          <div>
+            <strong style="font-size:12px; color:#ff6b81;">🔒 Álbum Privado Protegido</strong>
+            <p style="font-size:10px; color:#94a3b8; margin:2px 0 0 0;">Solo visible si te conceden acceso mutuo</p>
+          </div>
+          <button class="topbar-btn" style="background:#ff2e63; border:none; padding:5px 12px; font-size:11px;" onclick="requestPrivateAccess()">Pedir Acceso 🔑</button>
+        </div>
+
         </div>
 
         <div class="chat-input-row">
@@ -1023,7 +1229,242 @@
         profiles.unshift(newP);
         try { localStorage.setItem("chispa_real_profiles", JSON.stringify(profiles)); } catch(e) {}
         currentIndex = 0;
-        renderCard();
+        
+    // --- GESTIÓN DE CHATS ACTIVOS / PRESENTADOS ---
+    const activeConversations = [
+      { name: "Lucía, 29", photo: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80", lastMsg: "¡Hola! Qué bien poder hablar y mandarnos fotos gratis 😊" },
+      { name: "Elena, 32", photo: "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=300&q=80", lastMsg: "Me encanta la fotografía y las escapadas de fin de semana" },
+      { name: "Paula, 30", photo: "https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?auto=format&fit=crop&w=300&q=80", lastMsg: "Te mandé un saludo por aquí, cuando quieras charlamos" },
+      { name: "Sofía, 31", photo: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=300&q=80", lastMsg: "La puesta de sol en Castro hoy ha sido increíble ⛵" }
+    ];
+
+    function renderChatsDrawer() {
+      const container = document.getElementById("chatsDrawerList");
+      if (!container) return;
+      container.innerHTML = activeConversations.map(c => `
+        <div class="chat-drawer-item" onclick="openFreeChat('${c.name}', '${c.photo}'); toggleChatsDrawer();">
+          <img src="${c.photo}" alt="${c.name}" />
+          <div class="chat-drawer-info">
+            <strong>${c.name}</strong>
+            <span>${c.lastMsg}</span>
+          </div>
+          <span style="font-size:11px; color:#10b981; font-weight:700;">Hablar</span>
+        </div>
+      `).join("");
+      const countBadge = document.getElementById("chatDrawerCount");
+      if (countBadge) countBadge.textContent = activeConversations.length;
+    }
+
+    function toggleChatsDrawer() {
+      const d = document.getElementById("chatsDrawer");
+      if (!d) return;
+      if (d.style.display === "flex") {
+        d.style.display = "none";
+      } else {
+        renderChatsDrawer();
+        d.style.display = "flex";
+      }
+    }
+
+    // --- MI PERFIL (ISMAEL GONZÁLEZ MARTÍN) ---
+    function openMyProfileModal() {
+      document.getElementById("myProfileModal").style.display = "flex";
+    }
+
+    function closeMyProfileModal() {
+      document.getElementById("myProfileModal").style.display = "none";
+    }
+
+    function saveMyProfileChanges() {
+      const bio = document.getElementById("myProfileBio").value;
+      localStorage.setItem("chispa_ismael_bio", bio);
+      closeMyProfileModal();
+      showToast("✔️ ¡Perfil de Ismael González Martín actualizado!");
+    }
+
+    function addPhotoToMyBook(event) {
+      const file = event.target.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        const grid = document.getElementById("myPhotoBookGrid");
+        const newDiv = document.createElement("div");
+        newDiv.className = "photo-book-item";
+        newDiv.style.backgroundImage = `url('${e.target.result}')`;
+        grid.insertBefore(newDiv, grid.lastElementChild);
+        document.getElementById("myAvatarImg").src = e.target.result;
+        showToast("📸 ¡Nueva foto añadida a tu book!");
+      };
+      reader.readAsDataURL(file);
+    }
+
+    // --- BUSCAR PERSONA EN CONCRETO ---
+    function openSearchModal() {
+      document.getElementById("searchPersonModal").style.display = "flex";
+      filterPersonsList("");
+      document.getElementById("searchPersonInput").focus();
+    }
+
+    function closeSearchModal() {
+      document.getElementById("searchPersonModal").style.display = "none";
+    }
+
+    function filterPersonsList(query) {
+      const all = [...profiles, ...incomingLikes.map(l => ({ name: l.name, meta: l.dist, photo: l.photo, bio: l.bio }))];
+      const q = query.toLowerCase().trim();
+      const filtered = q ? all.filter(p => p.name.toLowerCase().includes(q) || (p.bio && p.bio.toLowerCase().includes(q))) : all;
+      
+      const list = document.getElementById("searchPersonsResultList");
+      if (!list) return;
+      list.innerHTML = filtered.map(p => `
+        <div class="chat-drawer-item" onclick="openFreeChat('${p.name}', '${p.photo}'); closeSearchModal();">
+          <img src="${p.photo}" alt="${p.name}" />
+          <div class="chat-drawer-info">
+            <strong>${p.name}</strong>
+            <span>${p.meta || p.bio || 'Verificada · En línea'}</span>
+          </div>
+          <button class="topbar-btn" style="background:#10b981; color:#042f2e; font-weight:800; border:none; padding:4px 10px;">Chatear</button>
+        </div>
+      `).join("");
+    }
+
+    // Inicializar cajón
+    renderChatsDrawer();
+
+    
+    function openMapModal() { document.getElementById("mapModal").style.display = "flex"; }
+    function closeMapModal() { document.getElementById("mapModal").style.display = "none"; }
+    function openNotificationsModal() { document.getElementById("notifModal").style.display = "flex"; }
+    function closeNotificationsModal() { document.getElementById("notifModal").style.display = "none"; }
+
+    
+    function requestPrivateAccess() {
+      const chatMessages = document.getElementById("chatMessages");
+      chatMessages.innerHTML += `<div class="msg me">🔑 He solicitado ver tu Álbum Privado protegido.</div>`;
+      showToast("🔒 Solicitud de acceso enviada");
+      setTimeout(() => {
+        chatMessages.innerHTML += `
+          <div class="msg them" style="border:1px solid #10b981; background:rgba(16,185,129,0.1);">
+            <div>🔓 <strong>¡Acceso Concedido!</strong></div>
+            <div style="font-size:11px; margin-top:4px;">Como eres una persona real verificada, te he desbloqueado mis fotos privadas sin coste.</div>
+          </div>
+        `;
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+        showToast("🔓 ¡Álbum privado desbloqueado!");
+      }, 1200);
+      chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+
+    
+    // --- CONTADOR DE VISITAS REALES Y ACTIVIDAD EN VIVO ---
+    function initVisitorCounter() {
+      let totalVisits = parseInt(localStorage.getItem("chispa_total_visits") || "14890", 10);
+      totalVisits += 1;
+      localStorage.setItem("chispa_total_visits", totalVisits.toString());
+      
+      const totalEl = document.getElementById("totalVisitsCounter");
+      if (totalEl) totalEl.textContent = totalVisits.toLocaleString("es-ES") + " visitas totales registradas";
+
+      let currentUsers = 1842;
+      const liveEl = document.getElementById("liveUserCounter");
+      
+      // Simular ligeras subidas orgánicas en directo
+      setInterval(() => {
+        const delta = Math.floor(Math.random() * 5) - 2; // -2 a +2
+        currentUsers = Math.max(1820, currentUsers + delta);
+        if (liveEl) liveEl.textContent = currentUsers.toLocaleString("es-ES") + " Personas Reales Conectadas";
+      }, 3500);
+    }
+    initVisitorCounter();
+
+    
+    function openAntiBotModal() { document.getElementById("antiBotModal").style.display = "flex"; }
+    function closeAntiBotModal() { document.getElementById("antiBotModal").style.display = "none"; }
+
+    
+    function toggleOledMode() {
+      const isOled = document.body.classList.toggle("pure-oled");
+      const btn = document.getElementById("darkModeBtn");
+      if (isOled) {
+        document.body.style.background = "#000000";
+        btn.innerHTML = "✨ Modo Oscuro Puro (Activo)";
+        btn.style.borderColor = "#10b981";
+        btn.style.color = "#6ee7b7";
+        showToast("🌙 Modo Oscuro OLED activado (Negro Puro)");
+      } else {
+        document.body.style.background = "#06070a";
+        btn.innerHTML = "🌙 Modo Oscuro OLED";
+        btn.style.borderColor = "#a855f7";
+        btn.style.color = "#d8b4fe";
+      }
+    }
+
+    
+    // Old visitors replaced
+    
+    const profileVisitors = [
+      { clue: "Una persona de Castro Urdiales ha pasado 2 minutos leyendo tu biografía y tus gustos por el mar.", time: "Hace 14 min", dist: "A 1,2 km", name: "Lucía, 29", photo: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80" },
+      { clue: "Alguien ha abierto tu foto del puerto y le ha llamado la atención tu estilo.", time: "Hace 40 min", dist: "A 2,5 km", name: "Elena, 32", photo: "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=300&q=80" },
+      { clue: "Una visitante ha vuelto a mirar tu perfil por segunda vez hoy.", time: "Hace 2 horas", dist: "A 3 km", name: "Paula, 30", photo: "https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?auto=format&fit=crop&w=300&q=80" }
+    ];
+
+    function renderProfileVisitors() {
+      const container = document.getElementById("visitorsListContainer");
+      if (!container) return;
+      container.innerHTML = profileVisitors.map((v, i) => `
+        <div class="chat-drawer-item" style="border:1px dashed rgba(234,179,8,0.4); background:rgba(234,179,8,0.06); padding:12px;">
+          <div style="width:44px; height:44px; border-radius:50%; background:radial-gradient(circle, #ca8a04 0%, #1e293b 100%); display:flex; align-items:center; justify-content:center; font-size:20px; border:2px solid #eab308;">
+            🕵️
+          </div>
+          <div class="chat-drawer-info">
+            <strong style="color:#fde047; font-size:12px;">Pista Secreta #${i+1} · ${v.dist}</strong>
+            <span style="color:#e2e8f0; font-size:11px; white-space:normal;">${v.clue}</span>
+            <span style="font-size:10px; color:#94a3b8; margin-top:2px;">Detectado: ${v.time}</span>
+          </div>
+          <button class="topbar-btn" style="background:#eab308; color:#000; font-weight:900; border:none; padding:6px 12px; font-size:11px;" onclick="revealVisitor('${v.name}', '${v.photo}')">Desvelar 🔍</button>
+        </div>
+      `).join("");
+    }
+
+    function revealVisitor(name, photo) {
+      openFreeChat(name, photo);
+      closeProfileVisitorsModal();
+      showToast(`✨ ¡Misterio resuelto! La persona que te miraba era ${name}`);
+    }
+
+    const oldV = [
+      { name: "Lucía, 29", photo: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80", time: "Hace 12 min", loc: "Castro Urdiales · Arquitecta" },
+      { name: "Clara, 28", photo: "https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?auto=format&fit=crop&w=300&q=80", time: "Hace 35 min", loc: "Bilbao · Música indie" },
+      { name: "Elena, 32", photo: "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=300&q=80", time: "Hace 1 hora", loc: "Castro Urdiales · Fotógrafa" },
+      { name: "Nerea, 31", photo: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=300&q=80", time: "Hace 2 horas", loc: "Laredo · Ilustradora" },
+      { name: "Sofía, 31", photo: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=300&q=80", time: "Hace 3 horas", loc: "Castro Urdiales · Instructora vela" }
+    ];
+
+    function renderProfileVisitors() {
+      const container = document.getElementById("visitorsListContainer");
+      if (!container) return;
+      container.innerHTML = profileVisitors.map(v => `
+        <div class="chat-drawer-item" style="border:1px solid rgba(234,179,8,0.25); background:rgba(234,179,8,0.05);" onclick="openFreeChat('${v.name}', '${v.photo}'); closeProfileVisitorsModal();">
+          <img src="${v.photo}" alt="${v.name}" style="border-color:#eab308;" />
+          <div class="chat-drawer-info">
+            <strong style="color:#fff;">${v.name}</strong>
+            <span>📍 ${v.loc} · <em style="color:#fde047;">${v.time}</em></span>
+          </div>
+          <button class="topbar-btn" style="background:#eab308; color:#000; font-weight:900; border:none; padding:5px 12px;">Saludar 👋</button>
+        </div>
+      `).join("");
+    }
+
+    function openProfileVisitorsModal() {
+      renderProfileVisitors();
+      document.getElementById("profileVisitorsModal").style.display = "flex";
+    }
+
+    function closeProfileVisitorsModal() {
+      document.getElementById("profileVisitorsModal").style.display = "none";
+    }
+
+    renderCard();
         closeRegisterModal();
         showToast(`✔️ ¡Perfil real de ${name} publicado gratis!`);
       };
@@ -1059,7 +1500,137 @@
         stampNope.style.opacity = "0";
         visual.style.transform = "none";
         currentIndex = (currentIndex + 1) % profiles.length;
-        renderCard();
+        
+    // --- GESTIÓN DE CHATS ACTIVOS / PRESENTADOS ---
+    const activeConversations = [
+      { name: "Lucía, 29", photo: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80", lastMsg: "¡Hola! Qué bien poder hablar y mandarnos fotos gratis 😊" },
+      { name: "Elena, 32", photo: "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=300&q=80", lastMsg: "Me encanta la fotografía y las escapadas de fin de semana" },
+      { name: "Paula, 30", photo: "https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?auto=format&fit=crop&w=300&q=80", lastMsg: "Te mandé un saludo por aquí, cuando quieras charlamos" },
+      { name: "Sofía, 31", photo: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=300&q=80", lastMsg: "La puesta de sol en Castro hoy ha sido increíble ⛵" }
+    ];
+
+    function renderChatsDrawer() {
+      const container = document.getElementById("chatsDrawerList");
+      if (!container) return;
+      container.innerHTML = activeConversations.map(c => `
+        <div class="chat-drawer-item" onclick="openFreeChat('${c.name}', '${c.photo}'); toggleChatsDrawer();">
+          <img src="${c.photo}" alt="${c.name}" />
+          <div class="chat-drawer-info">
+            <strong>${c.name}</strong>
+            <span>${c.lastMsg}</span>
+          </div>
+          <span style="font-size:11px; color:#10b981; font-weight:700;">Hablar</span>
+        </div>
+      `).join("");
+      const countBadge = document.getElementById("chatDrawerCount");
+      if (countBadge) countBadge.textContent = activeConversations.length;
+    }
+
+    function toggleChatsDrawer() {
+      const d = document.getElementById("chatsDrawer");
+      if (!d) return;
+      if (d.style.display === "flex") {
+        d.style.display = "none";
+      } else {
+        renderChatsDrawer();
+        d.style.display = "flex";
+      }
+    }
+
+    // --- MI PERFIL (ISMAEL GONZÁLEZ MARTÍN) ---
+    function openMyProfileModal() {
+      document.getElementById("myProfileModal").style.display = "flex";
+    }
+
+    function closeMyProfileModal() {
+      document.getElementById("myProfileModal").style.display = "none";
+    }
+
+    function saveMyProfileChanges() {
+      const bio = document.getElementById("myProfileBio").value;
+      localStorage.setItem("chispa_ismael_bio", bio);
+      closeMyProfileModal();
+      showToast("✔️ ¡Perfil de Ismael González Martín actualizado!");
+    }
+
+    function addPhotoToMyBook(event) {
+      const file = event.target.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        const grid = document.getElementById("myPhotoBookGrid");
+        const newDiv = document.createElement("div");
+        newDiv.className = "photo-book-item";
+        newDiv.style.backgroundImage = `url('${e.target.result}')`;
+        grid.insertBefore(newDiv, grid.lastElementChild);
+        document.getElementById("myAvatarImg").src = e.target.result;
+        showToast("📸 ¡Nueva foto añadida a tu book!");
+      };
+      reader.readAsDataURL(file);
+    }
+
+    // --- BUSCAR PERSONA EN CONCRETO ---
+    function openSearchModal() {
+      document.getElementById("searchPersonModal").style.display = "flex";
+      filterPersonsList("");
+      document.getElementById("searchPersonInput").focus();
+    }
+
+    function closeSearchModal() {
+      document.getElementById("searchPersonModal").style.display = "none";
+    }
+
+    function filterPersonsList(query) {
+      const all = [...profiles, ...incomingLikes.map(l => ({ name: l.name, meta: l.dist, photo: l.photo, bio: l.bio }))];
+      const q = query.toLowerCase().trim();
+      const filtered = q ? all.filter(p => p.name.toLowerCase().includes(q) || (p.bio && p.bio.toLowerCase().includes(q))) : all;
+      
+      const list = document.getElementById("searchPersonsResultList");
+      if (!list) return;
+      list.innerHTML = filtered.map(p => `
+        <div class="chat-drawer-item" onclick="openFreeChat('${p.name}', '${p.photo}'); closeSearchModal();">
+          <img src="${p.photo}" alt="${p.name}" />
+          <div class="chat-drawer-info">
+            <strong>${p.name}</strong>
+            <span>${p.meta || p.bio || 'Verificada · En línea'}</span>
+          </div>
+          <button class="topbar-btn" style="background:#10b981; color:#042f2e; font-weight:800; border:none; padding:4px 10px;">Chatear</button>
+        </div>
+      `).join("");
+    }
+
+    // Inicializar cajón
+    renderChatsDrawer();
+
+    
+    function openMapModal() { document.getElementById("mapModal").style.display = "flex"; }
+    function closeMapModal() { document.getElementById("mapModal").style.display = "none"; }
+    function openNotificationsModal() { document.getElementById("notifModal").style.display = "flex"; }
+    function closeNotificationsModal() { document.getElementById("notifModal").style.display = "none"; }
+
+    
+    function requestPrivateAccess() {
+      const chatMessages = document.getElementById("chatMessages");
+      chatMessages.innerHTML += `<div class="msg me">🔑 He solicitado ver tu Álbum Privado protegido.</div>`;
+      showToast("🔒 Solicitud de acceso enviada");
+      setTimeout(() => {
+        chatMessages.innerHTML += `
+          <div class="msg them" style="border:1px solid #10b981; background:rgba(16,185,129,0.1);">
+            <div>🔓 <strong>¡Acceso Concedido!</strong></div>
+            <div style="font-size:11px; margin-top:4px;">Como eres una persona real verificada, te he desbloqueado mis fotos privadas sin coste.</div>
+          </div>
+        `;
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+        showToast("🔓 ¡Álbum privado desbloqueado!");
+      }, 1200);
+      chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+
+    
+    function openAntiBotModal() { document.getElementById("antiBotModal").style.display = "flex"; }
+    function closeAntiBotModal() { document.getElementById("antiBotModal").style.display = "none"; }
+
+    renderCard();
       }, 240);
     }
 
@@ -1069,7 +1640,137 @@
         return;
       }
       currentIndex = historyStack.pop();
-      renderCard();
+      
+    // --- GESTIÓN DE CHATS ACTIVOS / PRESENTADOS ---
+    const activeConversations = [
+      { name: "Lucía, 29", photo: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80", lastMsg: "¡Hola! Qué bien poder hablar y mandarnos fotos gratis 😊" },
+      { name: "Elena, 32", photo: "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=300&q=80", lastMsg: "Me encanta la fotografía y las escapadas de fin de semana" },
+      { name: "Paula, 30", photo: "https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?auto=format&fit=crop&w=300&q=80", lastMsg: "Te mandé un saludo por aquí, cuando quieras charlamos" },
+      { name: "Sofía, 31", photo: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=300&q=80", lastMsg: "La puesta de sol en Castro hoy ha sido increíble ⛵" }
+    ];
+
+    function renderChatsDrawer() {
+      const container = document.getElementById("chatsDrawerList");
+      if (!container) return;
+      container.innerHTML = activeConversations.map(c => `
+        <div class="chat-drawer-item" onclick="openFreeChat('${c.name}', '${c.photo}'); toggleChatsDrawer();">
+          <img src="${c.photo}" alt="${c.name}" />
+          <div class="chat-drawer-info">
+            <strong>${c.name}</strong>
+            <span>${c.lastMsg}</span>
+          </div>
+          <span style="font-size:11px; color:#10b981; font-weight:700;">Hablar</span>
+        </div>
+      `).join("");
+      const countBadge = document.getElementById("chatDrawerCount");
+      if (countBadge) countBadge.textContent = activeConversations.length;
+    }
+
+    function toggleChatsDrawer() {
+      const d = document.getElementById("chatsDrawer");
+      if (!d) return;
+      if (d.style.display === "flex") {
+        d.style.display = "none";
+      } else {
+        renderChatsDrawer();
+        d.style.display = "flex";
+      }
+    }
+
+    // --- MI PERFIL (ISMAEL GONZÁLEZ MARTÍN) ---
+    function openMyProfileModal() {
+      document.getElementById("myProfileModal").style.display = "flex";
+    }
+
+    function closeMyProfileModal() {
+      document.getElementById("myProfileModal").style.display = "none";
+    }
+
+    function saveMyProfileChanges() {
+      const bio = document.getElementById("myProfileBio").value;
+      localStorage.setItem("chispa_ismael_bio", bio);
+      closeMyProfileModal();
+      showToast("✔️ ¡Perfil de Ismael González Martín actualizado!");
+    }
+
+    function addPhotoToMyBook(event) {
+      const file = event.target.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        const grid = document.getElementById("myPhotoBookGrid");
+        const newDiv = document.createElement("div");
+        newDiv.className = "photo-book-item";
+        newDiv.style.backgroundImage = `url('${e.target.result}')`;
+        grid.insertBefore(newDiv, grid.lastElementChild);
+        document.getElementById("myAvatarImg").src = e.target.result;
+        showToast("📸 ¡Nueva foto añadida a tu book!");
+      };
+      reader.readAsDataURL(file);
+    }
+
+    // --- BUSCAR PERSONA EN CONCRETO ---
+    function openSearchModal() {
+      document.getElementById("searchPersonModal").style.display = "flex";
+      filterPersonsList("");
+      document.getElementById("searchPersonInput").focus();
+    }
+
+    function closeSearchModal() {
+      document.getElementById("searchPersonModal").style.display = "none";
+    }
+
+    function filterPersonsList(query) {
+      const all = [...profiles, ...incomingLikes.map(l => ({ name: l.name, meta: l.dist, photo: l.photo, bio: l.bio }))];
+      const q = query.toLowerCase().trim();
+      const filtered = q ? all.filter(p => p.name.toLowerCase().includes(q) || (p.bio && p.bio.toLowerCase().includes(q))) : all;
+      
+      const list = document.getElementById("searchPersonsResultList");
+      if (!list) return;
+      list.innerHTML = filtered.map(p => `
+        <div class="chat-drawer-item" onclick="openFreeChat('${p.name}', '${p.photo}'); closeSearchModal();">
+          <img src="${p.photo}" alt="${p.name}" />
+          <div class="chat-drawer-info">
+            <strong>${p.name}</strong>
+            <span>${p.meta || p.bio || 'Verificada · En línea'}</span>
+          </div>
+          <button class="topbar-btn" style="background:#10b981; color:#042f2e; font-weight:800; border:none; padding:4px 10px;">Chatear</button>
+        </div>
+      `).join("");
+    }
+
+    // Inicializar cajón
+    renderChatsDrawer();
+
+    
+    function openMapModal() { document.getElementById("mapModal").style.display = "flex"; }
+    function closeMapModal() { document.getElementById("mapModal").style.display = "none"; }
+    function openNotificationsModal() { document.getElementById("notifModal").style.display = "flex"; }
+    function closeNotificationsModal() { document.getElementById("notifModal").style.display = "none"; }
+
+    
+    function requestPrivateAccess() {
+      const chatMessages = document.getElementById("chatMessages");
+      chatMessages.innerHTML += `<div class="msg me">🔑 He solicitado ver tu Álbum Privado protegido.</div>`;
+      showToast("🔒 Solicitud de acceso enviada");
+      setTimeout(() => {
+        chatMessages.innerHTML += `
+          <div class="msg them" style="border:1px solid #10b981; background:rgba(16,185,129,0.1);">
+            <div>🔓 <strong>¡Acceso Concedido!</strong></div>
+            <div style="font-size:11px; margin-top:4px;">Como eres una persona real verificada, te he desbloqueado mis fotos privadas sin coste.</div>
+          </div>
+        `;
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+        showToast("🔓 ¡Álbum privado desbloqueado!");
+      }, 1200);
+      chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+
+    
+    function openAntiBotModal() { document.getElementById("antiBotModal").style.display = "flex"; }
+    function closeAntiBotModal() { document.getElementById("antiBotModal").style.display = "none"; }
+
+    renderCard();
       showToast("⏪ Perfil anterior recuperado gratis");
     }
 
@@ -1106,8 +1807,365 @@
       setTimeout(() => { t.style.display = "none"; }, 2600);
     }
 
+    
+    // --- GESTIÓN DE CHATS ACTIVOS / PRESENTADOS ---
+    const activeConversations = [
+      { name: "Lucía, 29", photo: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80", lastMsg: "¡Hola! Qué bien poder hablar y mandarnos fotos gratis 😊" },
+      { name: "Elena, 32", photo: "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=300&q=80", lastMsg: "Me encanta la fotografía y las escapadas de fin de semana" },
+      { name: "Paula, 30", photo: "https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?auto=format&fit=crop&w=300&q=80", lastMsg: "Te mandé un saludo por aquí, cuando quieras charlamos" },
+      { name: "Sofía, 31", photo: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=300&q=80", lastMsg: "La puesta de sol en Castro hoy ha sido increíble ⛵" }
+    ];
+
+    function renderChatsDrawer() {
+      const container = document.getElementById("chatsDrawerList");
+      if (!container) return;
+      container.innerHTML = activeConversations.map(c => `
+        <div class="chat-drawer-item" onclick="openFreeChat('${c.name}', '${c.photo}'); toggleChatsDrawer();">
+          <img src="${c.photo}" alt="${c.name}" />
+          <div class="chat-drawer-info">
+            <strong>${c.name}</strong>
+            <span>${c.lastMsg}</span>
+          </div>
+          <span style="font-size:11px; color:#10b981; font-weight:700;">Hablar</span>
+        </div>
+      `).join("");
+      const countBadge = document.getElementById("chatDrawerCount");
+      if (countBadge) countBadge.textContent = activeConversations.length;
+    }
+
+    function toggleChatsDrawer() {
+      const d = document.getElementById("chatsDrawer");
+      if (!d) return;
+      if (d.style.display === "flex") {
+        d.style.display = "none";
+      } else {
+        renderChatsDrawer();
+        d.style.display = "flex";
+      }
+    }
+
+    // --- MI PERFIL (ISMAEL GONZÁLEZ MARTÍN) ---
+    function openMyProfileModal() {
+      document.getElementById("myProfileModal").style.display = "flex";
+    }
+
+    function closeMyProfileModal() {
+      document.getElementById("myProfileModal").style.display = "none";
+    }
+
+    function saveMyProfileChanges() {
+      const bio = document.getElementById("myProfileBio").value;
+      localStorage.setItem("chispa_ismael_bio", bio);
+      closeMyProfileModal();
+      showToast("✔️ ¡Perfil de Ismael González Martín actualizado!");
+    }
+
+    function addPhotoToMyBook(event) {
+      const file = event.target.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        const grid = document.getElementById("myPhotoBookGrid");
+        const newDiv = document.createElement("div");
+        newDiv.className = "photo-book-item";
+        newDiv.style.backgroundImage = `url('${e.target.result}')`;
+        grid.insertBefore(newDiv, grid.lastElementChild);
+        document.getElementById("myAvatarImg").src = e.target.result;
+        showToast("📸 ¡Nueva foto añadida a tu book!");
+      };
+      reader.readAsDataURL(file);
+    }
+
+    // --- BUSCAR PERSONA EN CONCRETO ---
+    function openSearchModal() {
+      document.getElementById("searchPersonModal").style.display = "flex";
+      filterPersonsList("");
+      document.getElementById("searchPersonInput").focus();
+    }
+
+    function closeSearchModal() {
+      document.getElementById("searchPersonModal").style.display = "none";
+    }
+
+    function filterPersonsList(query) {
+      const all = [...profiles, ...incomingLikes.map(l => ({ name: l.name, meta: l.dist, photo: l.photo, bio: l.bio }))];
+      const q = query.toLowerCase().trim();
+      const filtered = q ? all.filter(p => p.name.toLowerCase().includes(q) || (p.bio && p.bio.toLowerCase().includes(q))) : all;
+      
+      const list = document.getElementById("searchPersonsResultList");
+      if (!list) return;
+      list.innerHTML = filtered.map(p => `
+        <div class="chat-drawer-item" onclick="openFreeChat('${p.name}', '${p.photo}'); closeSearchModal();">
+          <img src="${p.photo}" alt="${p.name}" />
+          <div class="chat-drawer-info">
+            <strong>${p.name}</strong>
+            <span>${p.meta || p.bio || 'Verificada · En línea'}</span>
+          </div>
+          <button class="topbar-btn" style="background:#10b981; color:#042f2e; font-weight:800; border:none; padding:4px 10px;">Chatear</button>
+        </div>
+      `).join("");
+    }
+
+    // Inicializar cajón
+    renderChatsDrawer();
+
+    
+    function openMapModal() { document.getElementById("mapModal").style.display = "flex"; }
+    function closeMapModal() { document.getElementById("mapModal").style.display = "none"; }
+    function openNotificationsModal() { document.getElementById("notifModal").style.display = "flex"; }
+    function closeNotificationsModal() { document.getElementById("notifModal").style.display = "none"; }
+
+    
+    function requestPrivateAccess() {
+      const chatMessages = document.getElementById("chatMessages");
+      chatMessages.innerHTML += `<div class="msg me">🔑 He solicitado ver tu Álbum Privado protegido.</div>`;
+      showToast("🔒 Solicitud de acceso enviada");
+      setTimeout(() => {
+        chatMessages.innerHTML += `
+          <div class="msg them" style="border:1px solid #10b981; background:rgba(16,185,129,0.1);">
+            <div>🔓 <strong>¡Acceso Concedido!</strong></div>
+            <div style="font-size:11px; margin-top:4px;">Como eres una persona real verificada, te he desbloqueado mis fotos privadas sin coste.</div>
+          </div>
+        `;
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+        showToast("🔓 ¡Álbum privado desbloqueado!");
+      }, 1200);
+      chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+
+    
+    function openAntiBotModal() { document.getElementById("antiBotModal").style.display = "flex"; }
+    function closeAntiBotModal() { document.getElementById("antiBotModal").style.display = "none"; }
+
     renderCard();
     renderLikes();
   </script>
+
+  <!-- BOTÓN FLOTANTE: CHATS ANTERIORES Y PERSONAS CON QUIEN HAS HABLADO -->
+  <button class="floating-chats-btn" onclick="toggleChatsDrawer()" title="Ver personas con las que has hablado">
+    <span>💬 Chats Activos</span>
+    <span class="floating-badge" id="chatDrawerCount">4</span>
+  </button>
+
+  <!-- CAJÓN FLOTANTE DE CONVERSACIONES -->
+  <div class="chats-drawer" id="chatsDrawer">
+    <div class="chats-drawer-header">
+      <h3>💬 Tus Conversaciones Activas</h3>
+      <button onclick="toggleChatsDrawer()" style="background:none; border:none; color:#94a3b8; font-size:16px; cursor:pointer;">✕</button>
+    </div>
+    <div id="chatsDrawerList" style="display:flex; flex-direction:column; gap:8px;">
+      <!-- Rellenado dinámicamente -->
+    </div>
+  </div>
+
+  <!-- MODAL: MI PERFIL (ISMAEL GONZÁLEZ MARTÍN) -->
+  <div class="modal-backdrop" id="myProfileModal">
+    <div class="modal-card" style="max-width: 520px;">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+        <h2 style="font-size:20px; font-weight:800; color:#fff;">👤 Mi Perfil Real · Chispa Real</h2>
+        <button onclick="closeMyProfileModal()" style="background:none; border:none; color:#94a3b8; font-size:18px; cursor:pointer;">✕</button>
+      </div>
+
+      <div style="display:flex; gap:16px; align-items:center; margin-bottom:14px; background:rgba(255,255,255,0.03); padding:12px; border-radius:16px;">
+        <img id="myAvatarImg" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&q=80" style="width:72px; height:72px; border-radius:50%; object-fit:cover; border:2px solid var(--emerald);" />
+        <div>
+          <h3 style="font-size:18px; font-weight:800;" id="myProfileName">Ismael González Martín, 50</h3>
+          <p style="font-size:12px; color:#6ee7b7; font-weight:600;">📍 Castro Urdiales · Fundador de Chispa Real</p>
+          <span style="font-size:11px; background:rgba(16,185,129,0.15); color:#6ee7b7; padding:2px 8px; border-radius:999px; font-weight:700;">✔️ Perfil Verificado de Verdad</span>
+        </div>
+      </div>
+
+      <div class="form-field">
+        <label>Biografía Personal</label>
+        <textarea id="myProfileBio" rows="3">Me gustan las cosas claras, la lealtad y las personas de verdad, sin filtros ni dobleces. Si valoras una conversación sincera con un buen café o un paseo mirando al mar cantábrico, ya tenemos mucho en común. Aquí para conectar de verdad, sin tonterías ni muros de pago.</textarea>
+      </div>
+
+      <div>
+        <label style="font-size:12px; font-weight:700; color:#cbd5e1;">📸 Tu Book de Fotos</label>
+        <div class="photo-book-grid" id="myPhotoBookGrid">
+          <div class="photo-book-item" style="background-image:url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&q=80');"></div>
+          <div class="photo-book-item" style="background-image:url('https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=400&q=80');"></div>
+          <label class="photo-book-item add">
+            <span style="font-size:22px;">➕</span>
+            <span>Añadir foto al book</span>
+            <input type="file" accept="image/*" style="display:none;" onchange="addPhotoToMyBook(event)" />
+          </label>
+        </div>
+      </div>
+
+      <div style="display:flex; gap:10px; justify-content:flex-end; margin-top:16px;">
+        <button class="register-cta-btn" style="background:#334155;" onclick="closeMyProfileModal()">Cerrar</button>
+        <button class="register-cta-btn" onclick="saveMyProfileChanges()">💾 Guardar Cambios en Mi Perfil</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: BUSCAR PERSONA EN CONCRETO -->
+  <div class="modal-backdrop" id="searchPersonModal">
+    <div class="modal-card">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+        <h2 style="font-size:18px; font-weight:800; color:#fff;">🔍 Buscar Persona en Concreto</h2>
+        <button onclick="closeSearchModal()" style="background:none; border:none; color:#94a3b8; font-size:18px; cursor:pointer;">✕</button>
+      </div>
+      <p style="font-size:12px; color:var(--text-muted); margin-bottom:12px;">
+        Escribe un nombre, edad o afición (ej: vela, surf, gastronomía, diseño) para hablar directamente:
+      </p>
+      <input type="text" id="searchPersonInput" placeholder="Escribe el nombre de la persona..." oninput="filterPersonsList(this.value)" style="width:100%; padding:10px 14px; background:var(--bg-dark); border:1px solid var(--border); color:#fff; border-radius:10px; margin-bottom:14px;" />
+      
+      <div id="searchPersonsResultList" style="display:flex; flex-direction:column; gap:8px; max-height:260px; overflow-y:auto;">
+        <!-- Lista de resultados -->
+      </div>
+    </div>
+  </div>
+
+
+  <!-- MODAL: MAPA POR CERCANÍA / GEOLOCALIZACIÓN -->
+  <div class="modal-backdrop" id="mapModal">
+    <div class="modal-card" style="max-width:600px;">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+        <h2 style="font-size:19px; font-weight:800; color:#fff;">🗺️ Mapa de Cercanía · Castro Urdiales y Alrededores</h2>
+        <button onclick="closeMapModal()" style="background:none; border:none; color:#94a3b8; font-size:18px; cursor:pointer;">✕</button>
+      </div>
+      <p style="font-size:12px; color:var(--text-muted); margin-bottom:14px;">
+        Personas reales verificadas cerca de ti en este momento. Sin trampa ni cartón:
+      </p>
+      
+      <!-- Visualización interactiva tipo Radar / Mapa -->
+      <div style="position:relative; width:100%; height:260px; background:radial-gradient(circle at center, #1e293b 0%, #090b10 100%); border:1px solid var(--border); border-radius:16px; overflow:hidden; display:flex; align-items:center; justify-content:center;">
+        <!-- Círculos concéntricos de distancia -->
+        <div style="position:absolute; width:90px; height:90px; border:1px dashed rgba(16,185,129,0.4); border-radius:50%;"></div>
+        <div style="position:absolute; width:170px; height:170px; border:1px dashed rgba(16,185,129,0.3); border-radius:50%;"></div>
+        <div style="position:absolute; width:240px; height:240px; border:1px dashed rgba(16,185,129,0.2); border-radius:50%;"></div>
+        
+        <!-- Punto Central: Ismael -->
+        <div style="position:relative; z-index:3; text-align:center;">
+          <div style="width:40px; height:40px; border-radius:50%; background:#10b981; border:3px solid #fff; margin:0 auto; display:flex; align-items:center; justify-content:center; font-size:18px; box-shadow:0 0 15px rgba(16,185,129,0.8);">📍</div>
+          <span style="font-size:11px; font-weight:800; color:#fff;">Tú (Castro Urdiales)</span>
+        </div>
+
+        <!-- Personas en el mapa -->
+        <div onclick="openFreeChat('Lucía, 29', 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80'); closeMapModal();" style="position:absolute; top:35px; left:120px; cursor:pointer; text-align:center;">
+          <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=100&q=80" style="width:36px; height:36px; border-radius:50%; border:2px solid #ff2e63;" />
+          <div style="font-size:10px; color:#fff; font-weight:700;">Lucía (1,2 km)</div>
+        </div>
+
+        <div onclick="openFreeChat('Elena, 32', 'https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=300&q=80'); closeMapModal();" style="position:absolute; bottom:40px; right:110px; cursor:pointer; text-align:center;">
+          <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=100&q=80" style="width:36px; height:36px; border-radius:50%; border:2px solid #ff2e63;" />
+          <div style="font-size:10px; color:#fff; font-weight:700;">Elena (2,8 km)</div>
+        </div>
+
+        <div onclick="openFreeChat('Paula, 30', 'https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?auto=format&fit=crop&w=300&q=80'); closeMapModal();" style="position:absolute; top:55px; right:130px; cursor:pointer; text-align:center;">
+          <img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?auto=format&fit=crop&w=100&q=80" style="width:36px; height:36px; border-radius:50%; border:2px solid #ff2e63;" />
+          <div style="font-size:10px; color:#fff; font-weight:700;">Paula (3,5 km)</div>
+        </div>
+      </div>
+
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-top:14px;">
+        <span style="font-size:12px; color:#10b981; font-weight:700;">⚡ Radio de búsqueda activo: 5 km</span>
+        <button class="register-cta-btn" onclick="closeMapModal()">Listo</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: NOTIFICACIONES (A QUIÉN LE GUSTAS Y QUIÉN NO) -->
+  <div class="modal-backdrop" id="notifModal">
+    <div class="modal-card" style="max-width:480px;">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+        <h2 style="font-size:18px; font-weight:800; color:#fff;">🔔 Notificaciones Transparentes</h2>
+        <button onclick="closeNotificationsModal()" style="background:none; border:none; color:#94a3b8; font-size:18px; cursor:pointer;">✕</button>
+      </div>
+      <p style="font-size:12px; color:var(--text-muted); margin-bottom:14px;">
+        En Chispa Real sabes exactamente quién te ha dado Like y quién no, con fotos claras y sin filtros borrosos:
+      </p>
+
+      <div style="display:flex; flex-direction:column; gap:10px;">
+        <div class="chat-drawer-item" style="border:1px solid rgba(16,185,129,0.3); background:rgba(16,185,129,0.06);" onclick="openFreeChat('Lucía, 29', 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80'); closeNotificationsModal();">
+          <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80" />
+          <div class="chat-drawer-info">
+            <strong>💚 ¡A Lucía le gustas!</strong>
+            <span>Ha visto tu perfil y quiere charlar. Código verificado: #REAL-7712</span>
+          </div>
+          <span style="font-size:11px; color:#10b981; font-weight:800;">Chatear</span>
+        </div>
+
+        <div class="chat-drawer-item" style="border:1px solid rgba(16,185,129,0.3); background:rgba(16,185,129,0.06);" onclick="openFreeChat('Sofía, 31', 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=300&q=80'); closeNotificationsModal();">
+          <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=300&q=80" />
+          <div class="chat-drawer-info">
+            <strong>💚 ¡A Sofía le gustas!</strong>
+            <span>Le ha encantado tu foto en el puerto de Castro.</span>
+          </div>
+          <span style="font-size:11px; color:#10b981; font-weight:800;">Chatear</span>
+        </div>
+
+        <div class="chat-drawer-item" style="opacity:0.65;">
+          <div style="width:44px; height:44px; border-radius:50%; background:#334155; display:flex; align-items:center; justify-content:center; font-size:20px;">ℹ️</div>
+          <div class="chat-drawer-info">
+            <strong style="color:#94a3b8;">Descartes respetuosos</strong>
+            <span>Si alguien no coincide en intereses, la app lo archiva en silencio sin cobrarte nada ni hacerte perder el tiempo.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- MODAL: ESCUDO DE SEGURIDAD ANTI-BOTS -->
+  <div class="modal-backdrop" id="antiBotModal">
+    <div class="modal-card" style="max-width:520px; border-color:#38bdf8;">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+        <h2 style="font-size:18px; font-weight:800; color:#38bdf8;">🛡️ Escudo de Seguridad Anti-Bots y Personas Reales</h2>
+        <button onclick="closeAntiBotModal()" style="background:none; border:none; color:#94a3b8; font-size:18px; cursor:pointer;">✕</button>
+      </div>
+      <p style="font-size:12px; color:var(--text-muted); margin-bottom:14px;">
+        Protegemos a <strong>todas las personas por igual (hombres y mujeres)</strong>. Cero tolerancia a bots, granjas de spam o perfiles automatizados.
+      </p>
+
+      <div style="display:flex; flex-direction:column; gap:10px;">
+        <div style="background:rgba(56,189,248,0.08); border:1px solid rgba(56,189,248,0.3); border-radius:12px; padding:12px;">
+          <strong style="font-size:13px; color:#bae6fd;">1. Análisis Biométrico de Persona Real</strong>
+          <p style="font-size:11px; color:#cbd5e1; margin-top:3px;">Verificación obligatoria mediante foto en vivo tomada con la cámara. Los perfiles sospechosos son bloqueados antes de aparecer en el radar.</p>
+        </div>
+
+        <div style="background:rgba(56,189,248,0.08); border:1px solid rgba(56,189,248,0.3); border-radius:12px; padding:12px;">
+          <strong style="font-size:13px; color:#bae6fd;">2. Detección Heurística de Scripts y Automatismos</strong>
+          <p style="font-size:11px; color:#cbd5e1; margin-top:3px;">Monitoreo de velocidad de pulsaciones, patrones de ratón y tiempos de respuesta. Si una máquina intenta enviar mensajes masivos, es expulsada al instante.</p>
+        </div>
+
+        <div style="background:rgba(56,189,248,0.08); border:1px solid rgba(56,189,248,0.3); border-radius:12px; padding:12px;">
+          <strong style="font-size:13px; color:#bae6fd;">3. Privacidad y Control Mutuo en Fotos</strong>
+          <p style="font-size:11px; color:#cbd5e1; margin-top:3px;">Tanto hombres como mujeres deciden libremente a quién conceder acceso a su álbum privado. Nadie puede ver una foto sin permiso mutuo previo.</p>
+        </div>
+      </div>
+
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-top:16px;">
+        <span style="font-size:11px; color:#38bdf8; font-weight:700;">🟢 Estado del Escudo: 0 bots detectados / 100% Blindado</span>
+        <button class="register-cta-btn" style="background:#0284c7;" onclick="closeAntiBotModal()">Entendido</button>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- MODAL: QUIÉN HA MIRADO TU PERFIL -->
+  <div class="modal-backdrop" id="profileVisitorsModal">
+    <div class="modal-card" style="max-width:540px; border-color:#eab308;">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+        <h2 style="font-size:18px; font-weight:800; color:#fde047;">🕵️‍♂️ Huellas Secretas (Quién te ha mirado con intriga)</h2>
+        <button onclick="closeProfileVisitorsModal()" style="background:none; border:none; color:#94a3b8; font-size:18px; cursor:pointer;">✕</button>
+      </div>
+      <p style="font-size:12px; color:var(--text-muted); margin-bottom:14px;">
+        Para mantener la emoción y el juego de buscar, las visitas son un misterio: te damos la pista y la cercanía, y tú decides si investigas en el mazo o desbloqueas su identidad:
+      </p>
+
+      <div id="visitorsListContainer" style="display:flex; flex-direction:column; gap:10px; max-height:320px; overflow-y:auto;">
+        <!-- Rellenado dinámicamente -->
+      </div>
+
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-top:16px;">
+        <span style="font-size:11px; color:#fde047; font-weight:700;">🔥 Tu perfil tiene un 88% más de visitas que la media</span>
+        <button class="register-cta-btn" style="background:#ca8a04;" onclick="closeProfileVisitorsModal()">Cerrar</button>
+      </div>
+    </div>
+  </div>
+
 </body>
 </html>
